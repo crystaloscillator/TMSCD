@@ -1,12 +1,11 @@
 #! C:\Python27\python
 
+# the following function is used to calculate the 
+# adjusted Rand partition comparison coefficients
 import numpy as np
 import scipy.sparse as ss
 
-# the following function is used to calculate the 
-# adjusted Rand partition comparison coefficients
-
-def partAgreeCoef_ARonly(c1,c2):
+def partAgreeCoef_AR(c1,c2):
     c1=c1-np.min(c1)+1
     c2=c2-np.min(c2)+1
     n=np.size(c1); 
@@ -31,8 +30,7 @@ def partAgreeCoef_ARonly(c1,c2):
    
     return res
 
-#returns the binomial coefficient, defined as n!/((n–k)! k!). 
-#This is the number of combinations of n items taken k at a time.
+#This is the number of combinations of n items taken k at a time
 def nPerm(n,k):
     np=1
     for i in range(1,n+1):
@@ -46,6 +44,8 @@ def nPerm(n,k):
     return np/(nk*kp)
 
 #npp=nPerm(3,2)
-c1=np.array([2.,2.,3])
-c2=np.array([2.,3.,4.])
-r=partAgreeCoef_ARonly(c1,c2)
+if __name__ == '__main__':
+    c1=np.array([2.,2.,2.])
+    c2=np.array([2.,2.,2.])
+    r=partAgreeCoef_AR(c1,c2)
+pass
